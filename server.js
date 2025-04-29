@@ -13,6 +13,7 @@ app.get('/data', (req, res) => {
       return res.status(500).send('Error reading data file');
     }
     res.json(JSON.parse(data));
+    res.send('Welcome to the static job listings API! Access data at /data');
   });
 });
 
