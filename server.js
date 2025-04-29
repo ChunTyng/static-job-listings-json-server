@@ -12,6 +12,8 @@ app.use(
   }),
 );
 
+// app.use(cors());
+
 app.get('/', (req, res) => {
   res.send('Welcome to the static job listings API! Access data at /data');
 });
