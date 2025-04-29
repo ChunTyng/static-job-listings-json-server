@@ -9,6 +9,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to the static job listings API! Access data at /data');
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 app.get('/data', (req, res) => {
   fs.readFile(path.join(__dirname, 'data.json'), 'utf8', (err, data) => {
     if (err) {
