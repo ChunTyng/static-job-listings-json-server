@@ -1,9 +1,16 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(
+  cors({
+    origin: ['https://chuntyng.github.io'],
+  }),
+);
 
 app.get('/', (req, res) => {
   res.send('Welcome to the static job listings API! Access data at /data');
