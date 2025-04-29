@@ -8,11 +8,21 @@ const port = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.send('Welcome to the static job listings API! Access data at /data');
 });
+
 app.use(
   '/src/assets/images',
   express.static(path.join(__dirname, 'src/assets/images')),
 );
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
+app.get('/data/src/assets/images/:imageName', (req, res) => {
+  const imagePath = path.join(
+    __dirname,
+    'src/assets/images',
+    req.params.imageName,
+  );
+  res.sendFile(imagePath);
+});
 
 app.get('/data', (req, res) => {
   fs.readFile(path.join(__dirname, 'data.json'), 'utf8', (err, data) => {
