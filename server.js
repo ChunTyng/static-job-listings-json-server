@@ -8,7 +8,10 @@ const port = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.send('Welcome to the static job listings API! Access data at /data');
 });
-
+app.use(
+  '/src/assets/images',
+  express.static(path.join(__dirname, 'src/assets/images')),
+);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.get('/data', (req, res) => {
